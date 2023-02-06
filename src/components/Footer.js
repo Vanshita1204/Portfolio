@@ -16,12 +16,12 @@ const Footer = () => {
                     </div>                
                 </div>
                 <div className="phone">
-                <h4><FaPhone size={20} style={{color:"#fff", marginRight:"2rem" } }/>
+                <h4><FaPhone size={20} style={{color:"#f0f0f0", marginRight:"2rem" } }/>
                    +91 7355042461</h4>
 
                 </div>
                 <div className="email">
-                <h4><FaMailBulk size={20} style={{color:"#fff", marginRight:"2rem" } }/>
+                <h4><FaMailBulk size={20} style={{color:"#f0f0f0", marginRight:"2rem" } }/>
                    vanshitajain1204@gmail.com</h4>
 
                 </div>
