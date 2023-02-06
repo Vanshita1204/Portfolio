@@ -8,7 +8,8 @@ const Footer = () => {
         <div className="footer-container">
             <div className="left">
                 <div className="location">
-                    <FaHome size={20} style={{color:"#fff", marginRight:"2rem" } }/>
+                <FaHome size={20} style={{color:"#fff", marginRight:"2rem" } }/>
+
                     <div>
                         <p>Delhi, India.</p>
                         <p>110007</p>
@@ -26,12 +27,15 @@ const Footer = () => {
                 </div>
             </div>
             <div className="right">
+                <div>
+                <h4>Social Media</h4>
+                <p>You can ping me at: </p>
+                </div>
+                
                 <div class="social">
-                <FaInstagram size={20} style={{color:"#fff", marginRight:"2rem" } }/>
-                   <FaLinkedin size={20} style={{color:"#fff", marginRight:"2rem" } }/>
-                   
-                   <FaGithub size={20} style={{color:"#fff", marginRight:"2rem" } }/>
-                   
+                    <FaInstagram size={20} style={{color:"#fff", marginRight:"2rem" } }/>
+                    <FaLinkedin size={20} style={{color:"#fff", marginRight:"2rem" } }/>
+                    <FaGithub size={20} style={{color:"#fff", marginRight:"2rem" } }/>   
                 </div>      
             </div>
         </div>
