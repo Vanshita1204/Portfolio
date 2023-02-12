@@ -14,7 +14,7 @@ const Heroimg = () => {
         <h1 className="typed-out">Hello World!</h1>
         <h1> I AM VANSHITA.</h1>
         <p>
-         I am a coder, skilled up with in-demand full stack development tools. I feel I have a problem-solving step by step thinking approach. I aspire to be an exceptional coder and deploy my skills into efficiency and scalability.
+         I am a coder, skilled up with in-demand full stack development tools. I have a problem-solving step by step thinking approach. I aspire to be an exceptional coder and deploy my skills into efficiency and scalability.
         </p>
         <div>
         <Link to="/projects" className="btn">
