@@ -1,6 +1,6 @@
 import "./Form.css";
 import React from 'react'
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 const Form = () => {
   return (
     <div className="form">
@@ -13,7 +13,7 @@ const Form = () => {
             <input type="text"></input>
             <label>Your Message</label>
             <textarea rows="6" placeholder="Type your message here"/>
-            <NavLink className="btn">Sumbit</NavLink>
+            <Link to="/" className="btn">Sumbit</Link>
         </form>
 
     </div>
