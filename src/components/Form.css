@@ -17,3 +17,9 @@ form input, form textarea{
     border-color:rgba(255,255,255,0.1);
     color:#f0f0f0;
 }
+.btn{
+    padding: 0.5rem 1rem;
+    width: 60%;
+    text-align: center;
+    margin:1rem auto;
+}
