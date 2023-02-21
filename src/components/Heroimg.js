@@ -1,6 +1,7 @@
 import "./Heroimg.css";
 import React from 'react';
 import Intro from "../assets/intro.jpeg";
+import CV from "../assets/Vanshita_CV.pdf"
 import { Link } from "react-router-dom";
 import "../index.css"
 const Heroimg = () => {
@@ -20,9 +21,9 @@ const Heroimg = () => {
         <Link to="/projects" className="btn">
           Projects
         </Link>
-        <Link to="/contact" className="btn btn-light">
-          Contact
-        </Link>
+        <a href={CV} download className="btn btn-light">
+          Download CV
+        </a>
       </div>
      
       </div>
