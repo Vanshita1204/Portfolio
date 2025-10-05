@@ -1,7 +1,7 @@
 import "./Heroimg.css";
 import React from 'react';
 import Intro from "../assets/intro.jpeg";
-import CV from "../assets/Vanshita_CV.pdf"
+import CV from "../assets/Vanshita_Jain_Software_Engineer.pdf"
 import { Link } from "react-router-dom";
 import "../index.css"
 const Heroimg = () => {
