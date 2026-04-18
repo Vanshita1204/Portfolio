@@ -79,6 +79,29 @@ img {
   font-weight: 500;
   color: var(--text);
   margin-bottom: 48px;
+  display: inline-block;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-deep), var(--accent));
+  border-radius: 2px;
+  transition: width 0.45s ease;
+}
+
+.section-title:hover::after {
+  width: 100%;
+}
+
+@keyframes btnShimmer {
+  from { left: -80%; }
+  to   { left: 140%; }
 }
 
 /* Shared button styles */
@@ -95,6 +118,24 @@ img {
   transition: all 0.22s ease;
   border: 1.5px solid transparent;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-15deg);
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  animation: btnShimmer 0.55s ease forwards;
 }
 
 .btn--primary {

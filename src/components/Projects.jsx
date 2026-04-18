@@ -45,7 +45,27 @@ export default function Projects() {
         <h2 className="section-title">Projects</h2>
         <div ref={ref} className={`projects__grid reveal-children ${visible ? 'visible' : ''}`}>
           {projects.map((p, i) => (
-            <article key={i} className={`project-card project-card--${p.accent}`}>
+            <article
+              key={i}
+              className={`project-card project-card--${p.accent}`}
+              onMouseMove={e => {
+                const card = e.currentTarget
+                const rect = card.getBoundingClientRect()
+                const x = e.clientX - rect.left
+                const y = e.clientY - rect.top
+                const cx = rect.width / 2
+                const cy = rect.height / 2
+                const rotY = ((x - cx) / cx) * 5
+                const rotX = -((y - cy) / cy) * 5
+                card.style.transform = `perspective(800px) rotateY(${rotY}deg) rotateX(${rotX}deg) translateY(-6px)`
+                card.style.setProperty('--mx', `${x}px`)
+                card.style.setProperty('--my', `${y}px`)
+              }}
+              onMouseLeave={e => {
+                const card = e.currentTarget
+                card.style.transform = ''
+              }}
+            >
               <div className="project-card__accent-bar" aria-hidden="true" />
               <div className="project-card__top">
                 <div className="project-card__num" aria-hidden="true">0{i + 1}</div>
