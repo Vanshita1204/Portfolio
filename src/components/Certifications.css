@@ -1,0 +1,104 @@
+.certs {
+  background: var(--white);
+  padding: var(--section-padding);
+}
+
+.certs__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.certs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cert-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.cert-item:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  transform: translateX(4px);
+}
+
+.cert-item__icon {
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.cert-item__name {
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.cert-item__name--link {
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.cert-item__name--link:hover {
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cert-item__edu-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.cert-item__credential {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.cert-item__credential:hover {
+  color: var(--accent);
+  transform: translateX(2px);
+}
+
+.cert-item__institution-link {
+  transition: color 0.2s ease;
+}
+
+.cert-item__institution-link:hover {
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cert-item__meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .certs__inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}

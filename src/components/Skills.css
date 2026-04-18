@@ -1,0 +1,154 @@
+@keyframes pillShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.1); }
+}
+
+.skills {
+  background: var(--bg-alt);
+  padding: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle dot-grid background */
+.skills__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(156, 126, 193, 0.18) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  z-index: 0;
+}
+
+.skills .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Grid of skill cards */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* --- Skill card --- */
+.skill-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(196, 170, 255, 0.07) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+/* --- Card header --- */
+.skill-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.skill-card__icon {
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.skill-card__label {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* --- Pills --- */
+.skill-card__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.skill-pill {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 5px 13px;
+  border-radius: 100px;
+  background: var(--bg-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  transition: all 0.22s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-pill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.skill-pill:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(106, 63, 158, 0.15);
+}
+
+.skill-pill:hover::after {
+  opacity: 1;
+  animation: pillShimmer 0.7s ease;
+}
+
+@media (max-width: 640px) {
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+}
