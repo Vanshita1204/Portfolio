@@ -31,7 +31,9 @@ export default function Hero() {
           </div>
           <p className="hero__sub">
             Building distributed systems and LLM-powered products that scale.
-            Based in Lucknow, India · Open to remote roles worldwide.
+            3+ years shipping backend systems across edtech, travel, and retail —
+            from multi-tenant IAM and high-throughput data pipelines to LLM-integrated
+            workflows that hold up in production.
           </p>
           <div className="hero__ctas">
             <a href="#projects" className="btn btn--primary">View My Work</a>
