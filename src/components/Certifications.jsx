@@ -1,4 +1,5 @@
-import { useReveal } from '../hooks/useReveal'
+import { useEffect, useRef } from 'react'
+import { createTimeline, utils } from 'animejs'
 import './Certifications.css'
 
 const certs = [
@@ -47,13 +48,50 @@ const education = [
 ]
 
 export default function Certifications() {
-  const [ref, visible] = useReveal()
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const cols = el.querySelectorAll('.certs__col')
+    const items = el.querySelectorAll('.cert-item')
+
+    utils.set(cols, { opacity: 0, translateY: 32 })
+    utils.set(items, { opacity: 0, translateX: -18 })
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+
+        createTimeline({ defaults: { ease: 'outCubic' } })
+          .add(cols, {
+            opacity: [0, 1],
+            translateY: [32, 0],
+            duration: 600,
+            delay: utils.stagger(160),
+          })
+          .add(items, {
+            opacity: [0, 1],
+            translateX: [-18, 0],
+            duration: 420,
+            delay: utils.stagger(65),
+          }, '-=350')
+
+        observer.unobserve(el)
+      },
+      { threshold: 0.1 }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section id="certifications" className="certs">
       <div className="container">
-        <div ref={ref} className={`certs__inner reveal ${visible ? 'visible' : ''}`}>
-          <div>
+        <div ref={ref} className="certs__inner">
+          <div className="certs__col">
             <p className="section-label">Credentials</p>
             <h2 className="section-title">Certifications</h2>
             <div className="certs__list">
@@ -79,7 +117,7 @@ export default function Certifications() {
               ))}
             </div>
           </div>
-          <div>
+          <div className="certs__col">
             <p className="section-label">Academic background</p>
             <h2 className="section-title">Education</h2>
             <div className="certs__list">

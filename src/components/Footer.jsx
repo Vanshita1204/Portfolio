@@ -1,8 +1,11 @@
+import { useAnimeReveal } from '../hooks/useAnimeReveal'
 import './Footer.css'
 
 export default function Footer() {
+  const [ref] = useAnimeReveal()
+
   return (
-    <footer className="footer">
+    <footer className="footer reveal" ref={ref}>
       <div className="container footer__inner">
         <p className="footer__name">Vanshita Jain</p>
         <div className="footer__links">

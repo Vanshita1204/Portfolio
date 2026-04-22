@@ -1,11 +1,42 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
-import { useReveal } from '../hooks/useReveal'
+import { createTimeline, utils } from 'animejs'
 import './Contact.css'
 
 export default function Contact() {
-  const [ref, visible] = useReveal()
+  const innerRef = useRef(null)
   const formRef = useRef(null)
+
+  useEffect(() => {
+    const inner = innerRef.current
+    if (!inner) return
+
+    const textPanel = inner.querySelector('.contact__text')
+    const fields    = Array.from(inner.querySelectorAll('.form-field'))
+    const submitBtn = inner.querySelector('.contact__submit')
+
+    utils.set(textPanel, { opacity: 0, translateX: -32 })
+    utils.set(fields,    { opacity: 0, translateY: 28 })
+    utils.set(submitBtn, { opacity: 0, scale: 0.85 })
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+
+        createTimeline({ defaults: { ease: 'outCubic' } })
+          .add(textPanel, { opacity: [0, 1], translateX: [-32, 0], duration: 600 })
+          .add(fields,    { opacity: [0, 1], translateY: [28, 0], duration: 500,
+                            delay: utils.stagger(90, { start: 0 }) }, '-=400')
+          .add(submitBtn, { opacity: [0, 1], scale: [0.85, 1], ease: 'outBack(1.3)', duration: 380 }, '-=200')
+
+        observer.unobserve(inner)
+      },
+      { threshold: 0.12 }
+    )
+
+    observer.observe(inner)
+    return () => observer.disconnect()
+  }, [])
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
   const [form, setForm] = useState({ name: '', email: '', message: '' })
 
@@ -35,7 +66,7 @@ export default function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <div ref={ref} className={`contact__inner reveal ${visible ? 'visible' : ''}`}>
+        <div ref={innerRef} className="contact__inner">
           <div className="contact__text">
             <p className="section-label">Say hello</p>
             <h2 className="section-title">Let's Talk</h2>

@@ -15,15 +15,6 @@
   50%       { transform: translate(10px, -16px) scale(1.08); }
 }
 
-@keyframes heroSlideUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes heroTagIn {
-  from { opacity: 0; transform: translateY(12px) scale(0.92); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
 
 @keyframes spinRing {
   from { transform: rotate(0deg); }
@@ -157,15 +148,6 @@
   gap: 16px;
   flex-wrap: wrap;
 }
-
-/* Stagger animations when visible */
-.hero.visible .hero__eyebrow  { animation: heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.1s  both; }
-.hero.visible .hero__name     { animation: heroSlideUp 0.75s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
-.hero.visible .hero__title    { animation: heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.42s both; }
-.hero.visible .hero__tags     { animation: heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.56s both; }
-.hero.visible .hero__sub      { animation: heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.7s  both; }
-.hero.visible .hero__ctas     { animation: heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.84s both; }
-.hero.visible .hero__right    { animation: heroSlideUp 0.8s  cubic-bezier(0.16,1,0.3,1) 0.5s  both; }
 
 /* --- Right column decorative --- */
 .hero__right {

@@ -1,4 +1,5 @@
-import { useReveal } from '../hooks/useReveal'
+import { useEffect, useRef } from 'react'
+import { animate, utils } from 'animejs'
 import './Projects.css'
 
 const projects = [
@@ -32,7 +33,37 @@ const projects = [
 ]
 
 export default function Projects() {
-  const [ref, visible] = useReveal()
+  const gridRef = useRef(null)
+
+  useEffect(() => {
+    const grid = gridRef.current
+    if (!grid) return
+
+    const cards = Array.from(grid.children)
+    utils.set(cards, { opacity: 0, translateY: 40, rotateX: 8, scale: 0.95 })
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+
+        animate(cards, {
+          opacity:    [0, 1],
+          translateY: [40, 0],
+          rotateX:    [8, 0],
+          scale:      [0.95, 1],
+          ease: 'cubicBezier(.16,1,.3,1)',
+          duration: 700,
+          delay: utils.stagger(100, { start: 40 }),
+        })
+
+        observer.unobserve(grid)
+      },
+      { threshold: 0.1 }
+    )
+
+    observer.observe(grid)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section id="projects" className="projects">
@@ -43,7 +74,7 @@ export default function Projects() {
       <div className="container">
         <p className="section-label">What I've built</p>
         <h2 className="section-title">Projects</h2>
-        <div ref={ref} className={`projects__grid reveal-children ${visible ? 'visible' : ''}`}>
+        <div ref={gridRef} className="projects__grid">
           {projects.map((p, i) => (
             <article
               key={i}

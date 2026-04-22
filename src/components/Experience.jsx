@@ -1,4 +1,5 @@
-import { useReveal } from '../hooks/useReveal'
+import { useEffect, useRef } from 'react'
+import { createTimeline, utils } from 'animejs'
 import './Experience.css'
 
 const experience = [
@@ -73,14 +74,53 @@ const experience = [
 ]
 
 export default function Experience() {
-  const [ref, visible] = useReveal()
+  const timelineRef = useRef(null)
+
+  useEffect(() => {
+    const container = timelineRef.current
+    if (!container) return
+
+    const items = Array.from(container.querySelectorAll('.exp__item'))
+
+    items.forEach(item => {
+      const dot  = item.querySelector('.exp__dot')
+      const line = item.querySelector('.exp__line')
+      const card = item.querySelector('.exp__card')
+      if (dot)  utils.set(dot,  { opacity: 0, scale: 0 })
+      if (line) utils.set(line, { scaleY: 0 })
+      if (card) utils.set(card, { opacity: 0, translateX: 24 })
+    })
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+
+        const tl = createTimeline({ defaults: { ease: 'outCubic' } })
+        items.forEach((item, i) => {
+          const t    = i * 220
+          const dot  = item.querySelector('.exp__dot')
+          const line = item.querySelector('.exp__line')
+          const card = item.querySelector('.exp__card')
+          if (dot)  tl.add(dot,  { opacity: [0, 1], scale: [0, 1], ease: 'outBack(1.4)', duration: 380 }, t)
+          if (card) tl.add(card, { opacity: [0, 1], translateX: [24, 0], duration: 500 }, t + 120)
+          if (line) tl.add(line, { scaleY: [0, 1], duration: 500 }, t + 200)
+        })
+
+        observer.unobserve(container)
+      },
+      { threshold: 0.1 }
+    )
+
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section id="experience" className="experience">
       <div className="container">
         <p className="section-label">Where I've worked</p>
         <h2 className="section-title">Experience</h2>
-        <div ref={ref} className={`exp__timeline reveal ${visible ? 'visible' : ''}`}>
+        <div ref={timelineRef} className="exp__timeline">
           {experience.map((job, i) => (
             <div key={i} className="exp__item">
               <div className="exp__marker" aria-hidden="true">

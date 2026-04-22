@@ -1,4 +1,4 @@
-import { useReveal } from '../hooks/useReveal'
+import { useAnimeReveal } from '../hooks/useAnimeReveal'
 import { useCountUp } from '../hooks/useCountUp'
 import './About.css'
 
@@ -20,12 +20,12 @@ function StatCard({ value, label, started }) {
 }
 
 export default function About() {
-  const [ref, visible] = useReveal()
+  const [ref, visible] = useAnimeReveal({ stagger: true })
 
   return (
     <section id="about" className="about">
       <div className="container">
-        <div ref={ref} className={`about__inner reveal ${visible ? 'visible' : ''}`}>
+        <div ref={ref} className="about__inner reveal-children">
           <div className="about__text">
             <p className="section-label">About</p>
             <h2 className="section-title">A bit about me</h2>

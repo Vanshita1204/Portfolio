@@ -1,4 +1,4 @@
-import { useReveal } from '../hooks/useReveal'
+import { useAnimeReveal } from '../hooks/useAnimeReveal'
 import './Freelance.css'
 
 const services = [
@@ -23,7 +23,7 @@ const services = [
 ]
 
 export default function Freelance() {
-  const [ref, visible] = useReveal()
+  const [ref] = useAnimeReveal({ stagger: true })
 
   return (
     <section id="freelance" className="freelance">
@@ -34,7 +34,7 @@ export default function Freelance() {
           I take on select freelance engagements alongside my work. If you need a
           reliable senior backend engineer who can own things end-to-end — let's talk.
         </p>
-        <div ref={ref} className={`freelance__grid reveal-children ${visible ? 'visible' : ''}`}>
+        <div ref={ref} className="freelance__grid reveal-children">
           {services.map((s, i) => (
             <div key={i} className="service-card">
               <span className="service-card__icon" aria-hidden="true">{s.icon}</span>

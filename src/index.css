@@ -162,29 +162,9 @@ img {
   transform: translateY(-2px);
 }
 
-/* Scroll reveal animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+/* Scroll reveal — initial hidden states (anime.js drives the transitions) */
+.reveal,
 .reveal-children > * {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(24px);
 }
-
-.reveal-children.visible > *:nth-child(1)  { opacity: 1; transform: none; transition-delay: 0.05s; }
-.reveal-children.visible > *:nth-child(2)  { opacity: 1; transform: none; transition-delay: 0.15s; }
-.reveal-children.visible > *:nth-child(3)  { opacity: 1; transform: none; transition-delay: 0.25s; }
-.reveal-children.visible > *:nth-child(4)  { opacity: 1; transform: none; transition-delay: 0.35s; }
-.reveal-children.visible > *:nth-child(5)  { opacity: 1; transform: none; transition-delay: 0.45s; }
-.reveal-children.visible > *:nth-child(6)  { opacity: 1; transform: none; transition-delay: 0.55s; }
-.reveal-children.visible > *:nth-child(7)  { opacity: 1; transform: none; transition-delay: 0.65s; }
-.reveal-children.visible > *:nth-child(8)  { opacity: 1; transform: none; transition-delay: 0.75s; }

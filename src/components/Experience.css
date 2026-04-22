@@ -3,11 +3,6 @@
   50%       { box-shadow: 0 0 0 6px rgba(156, 126, 193, 0.2); }
 }
 
-@keyframes lineGrow {
-  from { transform: scaleY(0); }
-  to   { transform: scaleY(1); }
-}
-
 .experience {
   background: var(--bg-alt);
   padding: var(--section-padding);
@@ -49,14 +44,6 @@
   margin: 10px 0;
   min-height: 40px;
   transform-origin: top;
-  transform: scaleY(0);
-}
-
-.exp__timeline.visible .exp__item:nth-child(1) .exp__line {
-  animation: lineGrow 0.6s ease 0.4s forwards;
-}
-.exp__timeline.visible .exp__item:nth-child(2) .exp__line {
-  animation: lineGrow 0.6s ease 0.9s forwards;
 }
 
 .exp__card {
