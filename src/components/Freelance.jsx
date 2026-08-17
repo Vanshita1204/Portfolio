@@ -6,7 +6,7 @@ const services = [
     icon: '⚙️',
     title: 'API Design & Development',
     description:
-      'REST and async APIs built with FastAPI or Django REST Framework — schema-first, documented, and built to handle real production traffic.',
+      'REST and async APIs built with FastAPI or Django REST Framework: schema-first, documented, and built to handle real production traffic.',
   },
   {
     icon: '🏗️',
@@ -32,7 +32,7 @@ export default function Freelance() {
         <h2 className="section-title">Freelance Services</h2>
         <p className="freelance__intro">
           I take on select freelance engagements alongside my work. If you need a
-          reliable senior backend engineer who can own things end-to-end — let's talk.
+          reliable senior backend engineer who can own things end-to-end. Let's talk.
         </p>
         <div ref={ref} className="freelance__grid reveal-children">
           {services.map((s, i) => (

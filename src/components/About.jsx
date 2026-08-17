@@ -32,15 +32,15 @@ export default function About() {
             <p className="about__bio">
               I'm a backend engineer with a strong focus on distributed systems, API design,
               and building software that holds up under real-world load. I tend to care as
-              much about how something is built as what is built — clean abstractions,
+              much about how something is built as what is built: clean abstractions,
               observable systems, and code that the next engineer can reason about.
             </p>
             <p className="about__bio">
-              I'm drawn to problems that sit at the intersection of scale and correctness —
+              I'm drawn to problems that sit at the intersection of scale and correctness,
               where performance isn't optional and the design decisions actually matter.
             </p>
             <p className="about__bio">
-              My stack is Python-first — FastAPI, Django, Celery, Redis, PostgreSQL — and I've
+              My stack is Python-first (FastAPI, Django, Celery, Redis, PostgreSQL), and I've
               spent a lot of time making those pieces work reliably together under load. Lately
               I've been integrating LLMs into backend workflows: automating docs, scaffolding
               tests, accelerating feature cycles without letting AI become a blind spot.

@@ -71,7 +71,7 @@ export default function Contact() {
             <p className="section-label">Say hello</p>
             <h2 className="section-title">Let's Talk</h2>
             <p className="contact__sub">
-              Whether you're hiring, have a project in mind, or just want to connect —
+              Whether you're hiring, have a project in mind, or just want to connect,
               I'd love to hear from you.
             </p>
             <a href="mailto:vanshitajain1204@gmail.com" className="contact__email">

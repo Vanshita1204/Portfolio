@@ -4,10 +4,10 @@ import './Projects.css'
 
 const projects = [
   {
-    title: 'Job Aggregator & Analyzer',
+    title: 'AI Job Discovery Assistant',
     description:
-      'Multi-platform job scraping pipeline with concurrent workers, smart deduplication, and LLM-based CV analysis. Fully containerised for single-command deployment.',
-    tech: ['FastAPI', 'React', 'Celery', 'Redis', 'Docker', 'LLM'],
+      'A unified data discovery layer over popular job platforms: daily and on-demand scraping with dedup, plus paste-a-URL ingestion that falls back to LLM extraction for unsupported sites. An AI assistant then reads each CV against a specific posting and generates line-referenced tailoring suggestions (Groq/OpenAI/Anthropic/Gemini, user-selectable).',
+    tech: ['LLM', 'Data Discovery', 'FastAPI', 'Celery', 'Redis', 'Playwright', 'React'],
     github: 'https://github.com/Vanshita1204/jobs_aggregator',
     demo: null,
     accent: 'violet',
@@ -15,7 +15,7 @@ const projects = [
   {
     title: 'Influencer Sponsorship Management',
     description:
-      'REST API backend for end-to-end campaign management — Celery-driven scheduling, Redis-cached real-time metrics, and full campaign lifecycle workflow.',
+      'REST API backend for end-to-end campaign management: Celery-driven scheduling, Redis-cached real-time metrics, and full campaign lifecycle workflow.',
     tech: ['Flask', 'Celery', 'Redis', 'PostgreSQL'],
     github: 'https://github.com/Vanshita1204/influencer-sponsorship-management',
     demo: null,
@@ -24,7 +24,7 @@ const projects = [
   {
     title: 'Family Expense Tracker',
     description:
-      'Shared ledger app for households — split bills intelligently, track recurring costs, and get monthly spending breakdowns per member. Settlement suggestions reduce back-and-forth to zero.',
+      'Shared ledger app for households: split bills intelligently, track recurring costs, and get monthly spending breakdowns per member. Settlement suggestions reduce back-and-forth to zero.',
     tech: ['Django', 'React', 'PostgreSQL', 'REST API', 'Chart.js'],
     github: 'https://github.com/Vanshita1204',
     demo: null,

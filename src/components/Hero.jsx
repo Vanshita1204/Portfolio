@@ -51,7 +51,7 @@ export default function Hero() {
           </div>
           <p className="hero__sub">
             Building distributed systems and LLM-powered products that scale.
-            3+ years shipping backend systems across edtech, travel, and retail —
+            3+ years shipping backend systems across edtech, travel, and retail,
             from multi-tenant IAM and high-throughput data pipelines to LLM-integrated
             workflows that hold up in production.
           </p>
@@ -62,16 +62,29 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="hero__right" ref={rightRef} aria-hidden="true">
-          <div className="hero__deco">
-            <div className="hero__deco-ring hero__deco-ring--1" />
-            <div className="hero__deco-ring hero__deco-ring--2" />
-            <div className="hero__deco-ring hero__deco-ring--3" />
-            <div className="hero__deco-chip hero__deco-chip--1">FastAPI</div>
-            <div className="hero__deco-chip hero__deco-chip--2">Django</div>
-            <div className="hero__deco-chip hero__deco-chip--3">Redis</div>
-            <div className="hero__deco-chip hero__deco-chip--4">Docker</div>
-            <div className="hero__deco-chip hero__deco-chip--5">PostgreSQL</div>
+        <div className="hero__right" ref={rightRef}>
+          <div className="hero__featured">
+            <div className="hero__featured-ring hero__featured-ring--1" aria-hidden="true" />
+            <div className="hero__featured-ring hero__featured-ring--2" aria-hidden="true" />
+            <a
+              href="https://github.com/Vanshita1204/jobs_aggregator"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero__featured-card"
+            >
+              <span className="hero__featured-label">Featured Project</span>
+              <h2 className="hero__featured-title">AI Job Discovery Assistant</h2>
+              <p className="hero__featured-desc">
+                Aggregates listings from popular job platforms into one searchable
+                catalog, then an LLM assistant tailors your CV to each role, line by line.
+              </p>
+              <div className="hero__featured-tags">
+                {['Data Discovery', 'AI Assistant', 'FastAPI', 'Celery'].map(t => (
+                  <span key={t} className="hero__featured-tag">{t}</span>
+                ))}
+              </div>
+              <span className="hero__featured-link">View on GitHub →</span>
+            </a>
           </div>
         </div>
       </div>
