@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import { animate, utils } from 'animejs'
-import cvPdf from '../assets/Vanshita_Jain_CV.pdf'
+import cvPdf from '../assets/Vanshita_Jain_CV_Portfolio.pdf'
 import './Hero.css'
 
 const tags = ['Python Backend', 'Distributed Systems', 'LLM Integration']
@@ -57,7 +57,7 @@ export default function Hero() {
           </p>
           <div className="hero__ctas">
             <a href="#projects" className="btn btn--primary">View My Work</a>
-            <a href={cvPdf} download="Vanshita_Jain_CV.pdf" className="btn btn--outline">
+            <a href={cvPdf} download="Vanshita_Jain_CV_Portfolio.pdf" className="btn btn--outline">
               Download CV
             </a>
           </div>
