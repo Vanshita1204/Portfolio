@@ -59,7 +59,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
-  perspective: 1000px;
+  align-items: start;
 }
 
 /* --- Card base --- */
@@ -72,12 +72,12 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   position: relative;
-  will-change: transform;
 }
 
 .project-card:hover {
+  transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
 }
 
@@ -228,4 +228,28 @@
 
 .project-card__link--demo:hover {
   color: #4ecdc4;
+}
+
+.project-card__desc:not(.open) {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-card__more {
+  background: none;
+  border: none;
+  padding: 4px 0;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+
+.project-card__more:hover {
+  text-decoration-color: var(--accent-deep);
 }

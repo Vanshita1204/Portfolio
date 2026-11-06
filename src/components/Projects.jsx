@@ -1,16 +1,25 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { animate, utils } from 'animejs'
 import './Projects.css'
 
 const projects = [
   {
-    title: 'AI Job Discovery Assistant',
+    title: 'ACME Salary Management',
     description:
-      'A unified data discovery layer over popular job platforms: daily and on-demand scraping with dedup, plus paste-a-URL ingestion that falls back to LLM extraction for unsupported sites. An AI assistant then reads each CV against a specific posting and generates line-referenced tailoring suggestions (Groq/OpenAI/Anthropic/Gemini, user-selectable).',
-    tech: ['LLM', 'Data Discovery', 'FastAPI', 'Celery', 'Redis', 'Playwright', 'React'],
-    github: 'https://github.com/Vanshita1204/jobs_aggregator',
+      'Full-stack HR compensation system for 10K employees, designed for 1M: append-only pay history enforced by DB triggers, multi-currency analytics on daily-refreshed rates, keyset pagination, pg_trgm search, materialized-view insights, and a concurrency-capped analytics cache. 579 backend tests at 93% coverage; Dockerized and deployed on Render.',
+    tech: ['FastAPI', 'SQLAlchemy', 'PostgreSQL', 'React', 'TypeScript', 'Docker'],
+    github: 'https://github.com/Vanshita1204/acme-salary-management',
     demo: null,
     accent: 'violet',
+  },
+  {
+    title: 'Job Aggregator & Analyzer',
+    description:
+      'Full-stack job aggregator scraping LinkedIn / Indeed / Hirist on a Celery-beat schedule (Playwright + curl_cffi), with RAG-powered semantic job search: local MiniLM embeddings, cosine-similarity retrieval, LLM-extracted negation and location filters, and grounded answers across pluggable LLM providers (Groq / OpenAI / Anthropic / Gemini). JWT auth, GCS CV storage, Redis rate limiting, 63 pytest tests, 5-service Docker Compose stack.',
+    tech: ['RAG', 'FastAPI', 'Celery', 'Redis', 'Playwright', 'React', 'Docker Compose'],
+    github: 'https://github.com/Vanshita1204/jobs_aggregator',
+    demo: null,
+    accent: 'teal',
   },
   {
     title: 'Influencer Sponsorship Management',
@@ -19,18 +28,49 @@ const projects = [
     tech: ['Flask', 'Celery', 'Redis', 'PostgreSQL'],
     github: 'https://github.com/Vanshita1204/influencer-sponsorship-management',
     demo: null,
-    accent: 'teal',
-  },
-  {
-    title: 'Family Expense Tracker',
-    description:
-      'Shared ledger app for households: split bills intelligently, track recurring costs, and get monthly spending breakdowns per member. Settlement suggestions reduce back-and-forth to zero.',
-    tech: ['Django', 'React', 'PostgreSQL', 'REST API', 'Chart.js'],
-    github: 'https://github.com/Vanshita1204',
-    demo: null,
     accent: 'rose',
   },
 ]
+
+function ProjectCard({ p }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <article className={`project-card project-card--${p.accent}`}>
+      <div className="project-card__accent-bar" aria-hidden="true" />
+      <div className="project-card__top">
+        <h3 className="project-card__title">{p.title}</h3>
+        <p className={`project-card__desc ${open ? 'open' : ''}`}>{p.description}</p>
+        <button
+          type="button"
+          className="project-card__more"
+          aria-expanded={open}
+          onClick={() => setOpen(o => !o)}
+        >
+          {open ? 'Show less' : 'Read more'}
+        </button>
+      </div>
+      <div className="project-card__bottom">
+        <div className="project-card__tags">
+          {p.tech.map(t => (
+            <span key={t} className="project-card__tag">{t}</span>
+          ))}
+        </div>
+        <div className="project-card__links">
+          {p.github && (
+            <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`View ${p.title} on GitHub`}>
+              GitHub →
+            </a>
+          )}
+          {p.demo && (
+            <a href={p.demo} target="_blank" rel="noopener noreferrer" className="project-card__link project-card__link--demo" aria-label={`Live demo of ${p.title}`}>
+              Live →
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  )
+}
 
 export default function Projects() {
   const gridRef = useRef(null)
@@ -39,8 +79,9 @@ export default function Projects() {
     const grid = gridRef.current
     if (!grid) return
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const cards = Array.from(grid.children)
-    utils.set(cards, { opacity: 0, translateY: 40, rotateX: 8, scale: 0.95 })
+    utils.set(cards, { opacity: 0, translateY: 32 })
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -48,9 +89,7 @@ export default function Projects() {
 
         animate(cards, {
           opacity:    [0, 1],
-          translateY: [40, 0],
-          rotateX:    [8, 0],
-          scale:      [0.95, 1],
+          translateY: [32, 0],
           ease: 'cubicBezier(.16,1,.3,1)',
           duration: 700,
           delay: utils.stagger(100, { start: 40 }),
@@ -75,54 +114,8 @@ export default function Projects() {
         <p className="section-label">What I've built</p>
         <h2 className="section-title">Projects</h2>
         <div ref={gridRef} className="projects__grid">
-          {projects.map((p, i) => (
-            <article
-              key={i}
-              className={`project-card project-card--${p.accent}`}
-              onMouseMove={e => {
-                const card = e.currentTarget
-                const rect = card.getBoundingClientRect()
-                const x = e.clientX - rect.left
-                const y = e.clientY - rect.top
-                const cx = rect.width / 2
-                const cy = rect.height / 2
-                const rotY = ((x - cx) / cx) * 5
-                const rotX = -((y - cy) / cy) * 5
-                card.style.transform = `perspective(800px) rotateY(${rotY}deg) rotateX(${rotX}deg) translateY(-6px)`
-                card.style.setProperty('--mx', `${x}px`)
-                card.style.setProperty('--my', `${y}px`)
-              }}
-              onMouseLeave={e => {
-                const card = e.currentTarget
-                card.style.transform = ''
-              }}
-            >
-              <div className="project-card__accent-bar" aria-hidden="true" />
-              <div className="project-card__top">
-                <div className="project-card__num" aria-hidden="true">0{i + 1}</div>
-                <h3 className="project-card__title">{p.title}</h3>
-                <p className="project-card__desc">{p.description}</p>
-              </div>
-              <div className="project-card__bottom">
-                <div className="project-card__tags">
-                  {p.tech.map(t => (
-                    <span key={t} className="project-card__tag">{t}</span>
-                  ))}
-                </div>
-                <div className="project-card__links">
-                  {p.github && (
-                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-card__link" aria-label={`View ${p.title} on GitHub`}>
-                      GitHub →
-                    </a>
-                  )}
-                  {p.demo && (
-                    <a href={p.demo} target="_blank" rel="noopener noreferrer" className="project-card__link project-card__link--demo" aria-label={`Live demo of ${p.title}`}>
-                      Live →
-                    </a>
-                  )}
-                </div>
-              </div>
-            </article>
+          {projects.map(p => (
+            <ProjectCard key={p.title} p={p} />
           ))}
         </div>
       </div>

@@ -11,7 +11,7 @@ const skills = [
   {
     category: 'Frameworks',
     icon: '⚙',
-    items: ['Django', 'Django REST Framework', 'FastAPI', 'Flask', 'React'],
+    items: ['Django', 'Django REST Framework', 'FastAPI', 'Flask', 'SQLAlchemy', 'Alembic', 'Pydantic', 'HTMX', 'Alpine.js', 'React'],
   },
   {
     category: 'Databases',
@@ -21,7 +21,7 @@ const skills = [
   {
     category: 'Infrastructure',
     icon: '⬡',
-    items: ['Docker', 'Celery', 'GCP', 'Google Pub/Sub', 'Kafka', 'Jenkins', 'GitHub Actions', 'Sentry', 'Grafana', 'Brevo API', 'Zoho CRM'],
+    items: ['Docker', 'Celery', 'GCP', 'Google Pub/Sub', 'Kafka', 'Jenkins', 'GitHub Actions', 'Sentry', 'Grafana', 'ClamAV', 'Cloudflare R2', 'Playwright', 'curl_cffi', 'Gmail API', 'Brevo API', 'Zoho CRM'],
   },
   {
     category: 'Focus Areas',
@@ -35,6 +35,12 @@ const skills = [
       'Event-Driven Architecture',
       'SSO & RBAC',
       'OLAP & Analytics Pipelines',
+      'RAG & Semantic Search',
+      'AI Agents & Agentic Workflows',
+      'Secure File Ingestion',
+      'Workflow / State Machine Design',
+      'Revenue Forecasting',
+      'Technical Writing',
     ],
   },
 ]
