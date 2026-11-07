@@ -8,7 +8,7 @@ const TOTAL_PARTS = 6
 const series = {
   title: 'ACME Salary Management: Build Log',
   summary: 'A multi-part series on taking a 10K-employee take-home assessment to a million synthetic employees: schema design, load testing, profiling, and what actually moved the numbers.',
-  progress: 'Parts 1–5 published · 6 planned',
+  progress: 'Parts 1–6 published · Series complete',
   repo: 'https://github.com/Vanshita1204/acme-salary-management',
   parts: [
     {
@@ -40,6 +40,12 @@ const series = {
       date: 'Nov 2026',
       summary: 'A look inside PostgreSQL at what actually makes queries fast.',
       url: 'https://vanshitajain12.substack.com/p/inside-postgresql-what-actually-makes',
+    },
+    {
+      title: 'When Optimisations Meet the Real World',
+      date: 'Nov 2026',
+      summary: 'Observations from taking a system from local experiments to a constrained server.',
+      url: 'https://vanshitajain12.substack.com/p/when-optimisations-meet-the-real',
     },
   ],
 }
